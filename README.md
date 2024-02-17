@@ -1,5 +1,4 @@
 # APD-homework
-Cerinta exacta se gaseste in folderul fiecarei teme 
 
 # Tema 1 - Desenarea paralela de curbe contur folosind algoritmul Marching Squares
 
