@@ -1,0 +1,34 @@
+Tema 2 APD
+
+Poenaru Octavian - 335CA
+
+In aceasta tema, am avut de implementat doua clase, si anume:
+MyDispatcher
+MyHost.
+
+In clasa dispatcher, se primeau task-urile cu tipul alogirtmului
+de procesat, astfel ca aveam 4 algoritmi:
+* Robin Round
+* Shortest Queue
+* Size Interval Task Assignment
+* Least Work Left
+
+In functia de addTask, verificam ce tip de task este, si pe baza
+acestuia, trimiteam la host-ul respectiv; implementarea fiecarui
+algoritm s-a bazat pe descrierea din PDF
+
+
+In clasa MyHost, am avut ca si campuri un priority queue pentru task-uri,
+un boolean isFinished pe care il marchez True atunci cand thread-urile si-au terminat treaba
+si un Task, denumit runningTask, task-ul curent.
+In metoda run are loc toata logica de prelucrare a task-urilor, astfel ca
+taskurile trimise de dispatcher in ordinea corespunzatoare sunt procesate aici.
+Intai se verifica daca threadurile mai pot lucra sau daca coada nu e vida, si atunci
+se verifica daca thread-ul poate rula pe procesor (daca task.getStart() este
+mai mare sau egal decat timpul actual).
+Astfel ca thread-ul ruleaza cate o secunda, pentru fiecare secunda ramasa din Duration, modificand task.left, iar cand task.left e 0, atunci task-ul s-a terminat.
+Mai mult de atat, aici are loc implementarea cederii cu prioritate si a 
+preemptibilatii, astfel ca daca task-urile de pe threaduri implinesc aceste doua proprietati
+se vor schimba.
+Celelalte metode din clasa sunt getters si setters, si un addTask, aceste
+metode fiind sincronizate datorita posibilei concurente.
